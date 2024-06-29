@@ -1,0 +1,304 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap');
+
+
+:root {
+    --marineBlue: hsl(213, 96%, 18%);
+    --purplishBlue: hsl(243, 100%, 62%);
+    --pastelBlue: hsl(228, 100%, 84%);
+    --lightBlue: hsl(206, 94%, 87%);
+    --strawberryRed: hsl(354, 84%, 57%);
+    --coolGray: hsl(231, 11%, 63%);
+    --lightGray: hsl(225, 25%, 94%);
+    --magnolia: hsl(217, 100%, 97%);
+    --alabaster: hsl(231, 100%, 99%);
+    --white: hsl(0, 0%, 100%);
+    font-family: "Ubuntu", sans-serif;
+}
+
+body {
+    margin: 0;
+}
+
+.container {
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--magnolia);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-container {
+    background: var(--white);
+    padding: 1em;
+    display: flex;
+    height: 550px;
+    min-width: 850px;
+    max-width: 850px;
+    border-radius: 15px;
+    filter: drop-shadow(10px 10px 10px var(--lightGray));
+}
+
+.step-info {
+    width: 40%;
+    background-image: url(./assets/images/bg-sidebar-desktop.svg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: white;
+    border-radius: 15px;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.step-counter-container {
+    height: 47%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.step-info h4 {
+    font-weight: 400;
+    text-transform: uppercase;
+    color: var(--coolGray);
+}
+
+.step-info h2 {
+    font-size: 17px;
+    font-weight: 500;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+}
+
+.step-one,
+.step-two,
+.step-three,
+.step-four {
+    display: flex;
+    align-items: center;
+}
+
+.step-count-info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    border: 1px solid white;
+    height: 35px;
+    width: 35px;
+    margin-right: 20px;
+}
+
+.step-count-info h1 {
+    color: white;
+    font-size: 15px;
+    margin: 0;
+}
+
+.step-info h4,
+.step-info h2 {
+    margin: 0;
+}
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 25px 80px;
+    height: 100%;
+    width: 60%;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 80%;
+}
+
+.form-container input {
+    width: calc(100% - 50px);
+    padding: 15px;
+    border-radius: 5px;
+    border: 1px solid var(--coolGray);
+    color: var(--marineBlue);
+    font-size: 16px;
+    font-weight: 700;
+}
+
+input::placeholder {
+    color: var(--coolGray);
+}
+
+input:focus {
+    outline: 1px solid var(--purplishBlue);
+    border: 1px solid var(--coolGray);
+    transition: outline 1ms ease-in-out;
+}
+
+label {
+    color: var(--marineBlue);
+    font-weight: bold;
+}
+
+label input {
+    display: inline;
+}
+
+
+button {
+    width: 100px;
+    height: 40px;
+    text-align: center;
+    justify-content: center;
+    border: 0;
+    border-radius: 5px;
+    background-color: var(--marineBlue);
+    color: white;
+    font-weight: 700;
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+.step:not(.active) {
+    display: none;
+}
+
+#plan {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+#plan .plan-info {
+    width: 22%;
+    height: 120px;
+    padding: 15px;
+    border-radius: 10px;
+    border: 1px solid var(--coolGray);
+}
+
+.plan-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.plan-info:hover {
+    cursor: pointer;
+}
+
+.plan-title h4,
+p {
+    margin: 0.2em;
+}
+
+.plan-title h4 {
+    color: var(--marineBlue);
+}
+
+#step2 {
+    width: 100%;
+}
+
+.plan-selected {
+    border: 1px solid var(--purplishBlue) !important;
+    background-color: hsla(228, 100%, 84%, 0.2);
+}
+
+h1 {
+    color: var(--marineBlue);
+}
+
+.step {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 90%;
+    width: 100%;
+}
+
+#step1 button,
+#step4 button {
+    margin-left: auto;
+}
+
+#step5 {
+    align-items: center;
+    justify-content: center;
+}
+
+#step5 p {
+    color: var(--coolGray);
+}
+
+#step5 h1 {
+    margin: 15px 0;
+}
+
+.title p {
+    margin: 0;
+    font-size: 14px;
+}
+
+.title {
+    margin-bottom: 24px;
+    width: 100%;
+}
+
+.step-bottom-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.step-bottom-section h3 {
+    margin: 0;
+}
+
+.step-bottom-section h3:hover {
+    cursor: pointer;
+}
+
+/*Step 3 styles*/
+.checkbox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.checkbox1,
+.checkbox2,
+.checkbox3 {
+    display: flex;
+    align-items: center;
+    padding: 1.5em;
+    border-radius: 8px;
+    margin: 1em 0;
+    width: 100%;
+    box-sizing: border-box;
+    border: 2px solid var(--coolGray);
+}
+
+.checkbox2:hover,
+.checkbox1:hover,
+.checkbox3:hover {
+    cursor: pointer;
+}
+
+.checkbox input {
+    width: auto;
+    height: 20px;
+}
+
+.step-top-section h1 {
+    margin: 0 0 .6em 0;
+}
+
+#plan {
+    margin: 2em 0;
+}
