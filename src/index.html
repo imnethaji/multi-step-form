@@ -78,9 +78,8 @@
         <!-- Step 2 content -->
         <div id="step2" class="step ">
           <div class="step-top-section">
-
-            <h1>Select you plan</h1>
-            <p>You have the option of monthly of yearly billing.</p>
+            <h1 class="step-title">Select you plan</h1>
+            <p class="step-description">You have the option of monthly of yearly billing.</p>
             <div id="plan">
               <div id="plan-info" class="plan-info plan-selected">
                 <div class="plan-icon">
@@ -91,7 +90,7 @@
                     Arcade
                   </h4>
                   <p class="plan-name">
-                    $9/mo
+                    $<span id="arcadePlanPrice">9</span>/mo
                   </p>
                 </div>
               </div>
@@ -104,7 +103,7 @@
                     Advanced
                   </h4>
                   <p class="plan-price">
-                    $12/mo
+                    $<span id="advancedPlanPrice">12</span>/mo
                   </p>
                 </div>
               </div>
@@ -117,15 +116,19 @@
                     Pro
                   </h4>
                   <p class="plan-price">
-                    $15/mo
+                    $<span id="proPlanPrice">15</span>/mo
                   </p>
                 </div>
               </div>
             </div>
-
-            <label>Billing Cycle:</label>
-            <input type="radio" name="billing" value="monthly"> Monthly
-            <input type="radio" name="billing" value="yearly"> Yearly
+          </div>
+          <div id="price-toggle">
+            Monthly
+            <div class="toggle">
+              <div class="toggle-button" id="toggle-button">
+              </div>
+            </div>
+            Annually
           </div>
           <div class="step-bottom-section">
             <h3>Go Back</h3>
@@ -137,26 +140,41 @@
           <div class="step-top-section">
             <h1>Pick add-ons</h1>
             <p>Add-ons help enhance your gaming experience.</p>
-            <div class="checkbox">
+            <div class="add_on_container">
               <div class="checkbox1" onclick="toggleCheckbox('onlineService')">
-                <input type="checkbox" id="onlineService" value="1">
-                <label for="onlineService">Online Service (+$1/mo)</label>
+                <div class="add_on_title">
+                  <input type="checkbox" id="onlineService" value="1">
+                  <div>
+                    <h3>Online Service</h3>
+                    <p>Access to multiplayer games</p>
+                  </div>
+                </div>
+                <p>+$1/mo</p>
               </div>
               <div class="checkbox2" onclick="toggleCheckbox('largerStorage')">
-
-                <input type="checkbox" id="largerStorage" value="2"><label for="largerStorage"> Larger Storage
-                  (+$2/mo)</label>
-                <p>Extra 1TB of cloud save</p>
+                <div class="add_on_title">
+                  <input type="checkbox" id="onlineService" value="1">
+                  <div>
+                    <h3>Larger Storage</h3>
+                    <p>Extra 1TB of cloud save</p>
+                  </div>
+                </div>
+                <p>+$2/mo</p>
               </div>
               <div class="checkbox3" onclick="toggleCheckbox('customizableProfile')">
-
-                <input type="checkbox" id="customizableProfile" value="2"><label for="customizableProfile"> Customizable
-                  Profile (+$2/mo)</label>
+                <div class="add_on_title">
+                  <input type="checkbox" id="onlineService" value="1">
+                  <div>
+                    <h3>Customizable Profile</h3>
+                    <p>Custom theme on your profile</p>
+                  </div>
+                </div>
+                <p>+$2/mo</p>
               </div>
             </div>
           </div>
           <div class="step-bottom-section">
-            <h3>Go Back</h3>
+            <h3 id="step_back">Go Back</h3>
             <button onclick="nextStep()">Next Step</button>
           </div>
         </div>
@@ -170,8 +188,7 @@
             </div>
           </div>
           <div class="step-bottom-section">
-
-
+            <h3>Go Back</h3>
             <button onclick="nextStep()">Confirm</button>
           </div>
         </div>
@@ -182,10 +199,8 @@
             please feel free to email us at support@lermgaing.com</p>
         </div>
       </div>
-
     </div>
   </div>
-
 </body>
 <script src="./js.js"></script>
 

@@ -1,5 +1,38 @@
 let currentStep = 1;
 
+//  Toggle Monthly and Annual prices
+const prices = {
+  monthly: { arcade: 9, advanced: 12, pro: 15 },
+  annually: { arcade: 90, advanced: 120, pro: 150 },
+};
+
+let pricing = "monthly";
+
+document.addEventListener("DOMContentLoaded", function () {
+  const toggleButton = document.getElementById("price-toggle");
+  const toggleDiv = document.querySelector(".toggle");
+
+  function toggle() {
+    let arcadePrice = document.getElementById("arcadePlanPrice");
+    let advancedPrice = document.getElementById("advancedPlanPrice");
+    let proPrice = document.getElementById("proPlanPrice");
+    toggleDiv.classList.toggle("right");
+
+    if (pricing === "monthly") {
+      arcadePrice.innerHTML = prices.annually.arcade;
+      advancedPrice.innerHTML = prices.annually.advanced;
+      proPrice.innerHTML = prices.annually.pro;
+      pricing = "annually";
+    } else {
+      arcadePrice.innerHTML = prices.monthly.arcade;
+      advancedPrice.innerHTML = prices.monthly.advanced;
+      proPrice.innerHTML = prices.monthly.pro;
+      pricing = "monthly";
+    }
+  }
+  toggleButton.addEventListener("click", toggle);
+});
+
 function nextStep() {
   const currentStepElement = document.getElementById(`step${currentStep}`);
   const nextStepElement = document.getElementById(`step${currentStep + 1}`);
