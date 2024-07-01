@@ -142,7 +142,7 @@ label {
 
 input[type="checkbox"] {
     height: 19px;
-    width: 19px;
+    width: 19 px;
     accent-color: var(--purplishBlue);
 }
 
