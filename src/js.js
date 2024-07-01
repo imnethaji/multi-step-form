@@ -44,6 +44,17 @@ function nextStep() {
   }
 }
 
+function prevStep() {
+  const currentStepElement = document.getElementById(`step${currentStep}`);
+  const prevStepElement = document.getElementById(`step${currentStep - 1}`);
+
+  if (currentStepElement && prevStepElement) {
+    currentStepElement.classList.remove("active");
+    prevStepElement.classList.add("active");
+    currentStep--;
+  }
+}
+
 function confirmSubscription() {
   // Collect and display summary
   const name = document.getElementById("name").value;

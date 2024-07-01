@@ -56,19 +56,25 @@
         <div id="step1" class="step active">
           <div class="step-top-section">
 
-            <div class="title">
-              <h1>Personal Info</h1>
-              <p>Please provide your name, email address, and phone number.</p>
+            <div class="title-container">
+              <h1 class="step-title">Personal Info</h1>
+              <p class="step-description">Please provide your name, email address, and phone number.</p>
             </div>
             <div class="content">
-              <label for="name">Name:</label>
-              <input type="text" id="name" placeholder="e.g. Stephen King">
+              <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" id="name" placeholder="e.g. Stephen King">
+              </div>
 
-              <label for="email">Email Address:</label>
-              <input type="email" id="email" placeholder="stephenking@lorem.com">
+              <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" placeholder="stephenking@lorem.com">
+              </div>
 
-              <label for="phone">Phone Number:</label>
-              <input type="tel" id="phone" placeholder="e.g.+1 234 567 890">
+              <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" placeholder="e.g. +1 234 567 890">
+              </div>
             </div>
           </div>
           <div class="step-bottom-section">
@@ -78,8 +84,10 @@
         <!-- Step 2 content -->
         <div id="step2" class="step ">
           <div class="step-top-section">
-            <h1 class="step-title">Select you plan</h1>
-            <p class="step-description">You have the option of monthly of yearly billing.</p>
+            <div class="title-container">
+              <h1 class="step-title">Select you plan</h1>
+              <p class="step-description">You have the option of monthly of yearly billing.</p>
+            </div>
             <div id="plan">
               <div id="plan-info" class="plan-info plan-selected">
                 <div class="plan-icon">
@@ -121,25 +129,28 @@
                 </div>
               </div>
             </div>
-          </div>
-          <div id="price-toggle">
-            Monthly
-            <div class="toggle">
-              <div class="toggle-button" id="toggle-button">
+            <div id="price-toggle">
+              Monthly
+              <div class="toggle">
+                <div class="toggle-button" id="toggle-button">
+                </div>
               </div>
+              Annually
             </div>
-            Annually
           </div>
+
           <div class="step-bottom-section">
-            <h3>Go Back</h3>
+            <h3 onclick="prevStep()">Go Back</h3>
             <button onclick="nextStep()">Next Step</button>
           </div>
         </div>
         <!-- Step 3 content -->
         <div id="step3" class="step ">
           <div class="step-top-section">
-            <h1>Pick add-ons</h1>
-            <p>Add-ons help enhance your gaming experience.</p>
+            <div class="title-container">
+              <h1 class="step-title">Pick add-ons</h1>
+              <p class="step-description">Add-ons help enhance your gaming experience.</p>
+            </div>
             <div class="add_on_container">
               <div class="checkbox1" onclick="toggleCheckbox('onlineService')">
                 <div class="add_on_title">
@@ -174,27 +185,26 @@
             </div>
           </div>
           <div class="step-bottom-section">
-            <h3 id="step_back">Go Back</h3>
+            <h3 id="step_back" onclick="prevStep()">Go Back</h3>
             <button onclick="nextStep()">Next Step</button>
           </div>
         </div>
         <!-- Step 4 content -->
         <div id="step4" class="step ">
           <div class="step-top-section">
-
-            <div class="title">
-              <h1>Finishing up</h1>
-              <p>Double-check everything looks OK before confirming.</p>
+            <div class="title-container">
+              <h1 class="step-title">Finishing up</h1>
+              <p class="step-description">Double-check everything looks OK before confirming.</p>
             </div>
           </div>
           <div class="step-bottom-section">
-            <h3>Go Back</h3>
+            <h3 onclick="prevStep()">Go Back</h3>
             <button onclick="nextStep()">Confirm</button>
           </div>
         </div>
         <div id="step5" class="step ">
           <img src="./assets/images/icon-thank-you.svg" alt="">
-          <h1>Thank you!</h1>
+          <h1 class="step-title">Thank you!</h1>
           <p>Thanks for confirming your subscription! We hope you have fun using our platform. If you ever need support,
             please feel free to email us at support@lermgaing.com</p>
         </div>
