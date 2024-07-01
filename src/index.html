@@ -18,7 +18,7 @@
               <h1>1 </h1>
             </div>
             <div class="step-count-txt">
-              <h4>Step 1:</h4>
+              <h4>Step 1</h4>
               <h2> Your Info</h2>
             </div>
           </div>
@@ -27,7 +27,7 @@
               <h1>2</h1>
             </div>
             <div class="step-count-txt">
-              <h4>Step 2:</h4>
+              <h4>Step 2</h4>
               <h2> Select Plan</h2>
             </div>
           </div>
@@ -36,7 +36,7 @@
               <h1>3</h1>
             </div>
             <div class="step-count-txt">
-              <h4>Step 3:</h4>
+              <h4>Step 3</h4>
               <h2> Add-ons</h2>
             </div>
           </div>
@@ -45,7 +45,7 @@
               <h1>4</h1>
             </div>
             <div class="step-count-txt">
-              <h4>Step 4:</h4>
+              <h4>Step 4</h4>
               <h2>Summary</h2>
             </div>
           </div>
@@ -196,12 +196,41 @@
               <h1 class="step-title">Finishing up</h1>
               <p class="step-description">Double-check everything looks OK before confirming.</p>
             </div>
+            <div class="final-plan-info">
+              <div class="final-info-row">
+                <div class="info-left">
+                  <h4 id="final-plan">
+                    Arcade(Yearly)
+                  </h4>
+                  <p>Change</p>
+                </div>
+                <div class="info-right">
+                  <h4 id="final-plan-price">$90/yr</h4>
+                </div>
+              </div>
+              <hr>
+              <ul id="add-ons-list">
+                <li id="add-on-list-item-1">
+                  <p id="add-on-title">Online service</p>
+                  <p id="add-on-price">+10/yr</p>
+                </li>
+                <li id="add-on-list-item-2">
+                  <p id="add-on-title">Larger storage</p>
+                  <p id="add-on-price">+20/yr</p>
+                </li>
+              </ul>
+            </div>
+            <div class="plan-total-price-container">
+              <p>Total (<span>per year</span>)</p>
+              <h3 id="plan-total-price">$120/yr</h3>
+            </div>
           </div>
           <div class="step-bottom-section">
             <h3 onclick="prevStep()">Go Back</h3>
-            <button onclick="nextStep()">Confirm</button>
+            <button id="confirm" onclick="nextStep()">Confirm</button>
           </div>
         </div>
+        <!-- Confirm page -->
         <div id="step5" class="step ">
           <img src="./assets/images/icon-thank-you.svg" alt="">
           <h1 class="step-title">Thank you!</h1>

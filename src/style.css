@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap');
 
-
 :root {
     --marineBlue: hsl(213, 96%, 18%);
     --purplishBlue: hsl(243, 100%, 62%);
@@ -61,10 +60,11 @@ body {
     font-weight: 400;
     text-transform: uppercase;
     color: var(--coolGray);
+    font-size: .9em;
 }
 
 .step-info h2 {
-    font-size: 17px;
+    font-size: 16px;
     font-weight: 500;
     letter-spacing: .1em;
     text-transform: uppercase;
@@ -166,7 +166,6 @@ input[type="checkbox"] {
 label input {
     display: inline;
 }
-
 
 button {
     width: 100px;
@@ -279,12 +278,14 @@ p.step-description {
 .step-bottom-section {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-end;
 }
 
 .step-bottom-section h3 {
     color: var(--coolGray);
     margin: 0;
+    font-size: 1.1em;
+    font-weight: 500;
 }
 
 .step-bottom-section h3:hover {
@@ -386,4 +387,83 @@ p.step-description {
 
 #plan {
     margin: 2em 0;
+}
+
+/* Finishing up page design */
+
+.final-plan-info {
+    background-color: var(--magnolia);
+    padding: 2em;
+    border-radius: .6em;
+
+}
+
+.final-info-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.final-info-row h4 {
+    margin: 0;
+    margin-bottom: .6em;
+    color: var(--marineBlue);
+}
+
+.final-info-row p {
+    margin: 0;
+    color: var(--coolGray);
+    text-decoration: underline;
+}
+
+.final-info-row p:hover {
+    margin: 0;
+    color: var(--purplishBlue);
+    cursor: pointer;
+}
+
+hr {
+    margin-top: 2em;
+}
+
+ul {
+    padding: 0;
+}
+
+#add-on-list-item-1,
+#add-on-list-item-2,
+#add-on-list-item-3 {
+    list-style-type: none;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: .6em;
+}
+
+#add-on-title {
+    color: var(--coolGray);
+}
+
+#add-on-price {
+    color: var(--marineBlue);
+    font-weight: 500;
+}
+
+.plan-total-price-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 2em;
+}
+
+.plan-total-price-container>p {
+    font-weight: 500;
+    color: var(--coolGray);
+}
+
+#plan-total-price {
+    color: var(--purplishBlue);
+}
+
+#confirm {
+    background-color: var(--purplishBlue);
 }
