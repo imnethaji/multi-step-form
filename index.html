@@ -104,37 +104,40 @@
                 </p>
               </div>
               <div id="plan">
-                <div id="plan-info" class="plan-info plan-selected">
+                <div class="plan-info plan-selected">
                   <div class="plan-icon">
-                    <img src="./assets/images/icon-arcade.svg" alt="" />
+                    <img
+                      src="./assets/images/icon-arcade.svg"
+                      alt="arcade plan image"
+                    />
                   </div>
                   <div class="plan-title">
                     <h4 class="plan-name">Arcade</h4>
-                    <p class="plan-name">
-                      $<span id="arcadePlanPrice">9</span>/mo
-                    </p>
+                    <p class="plan-name" id="arcadePlanPrice">$9/mo</p>
                   </div>
                 </div>
-                <div id="plan-info" class="plan-info">
+                <div class="plan-info">
                   <div class="plan-icon">
-                    <img src="./assets/images/icon-advanced.svg" alt="" />
+                    <img
+                      src="./assets/images/icon-advanced.svg"
+                      alt="advanced plan image"
+                    />
                   </div>
                   <div class="plan-title">
                     <h4 class="plan-name">Advanced</h4>
-                    <p class="plan-price">
-                      $<span id="advancedPlanPrice">12</span>/mo
-                    </p>
+                    <p class="plan-price" id="advancedPlanPrice">$12/mo</p>
                   </div>
                 </div>
-                <div id="plan-info" class="plan-info">
+                <div class="plan-info">
                   <div class="plan-icon">
-                    <img src="./assets/images/icon-pro.svg" alt="" />
+                    <img
+                      src="./assets/images/icon-pro.svg"
+                      alt="pro plan image"
+                    />
                   </div>
                   <div class="plan-title">
                     <h4 class="plan-name">Pro</h4>
-                    <p class="plan-price">
-                      $<span id="proPlanPrice">15</span>/mo
-                    </p>
+                    <p class="plan-price" id="proPlanPrice">$15/mo</p>
                   </div>
                 </div>
               </div>
@@ -173,7 +176,7 @@
                       <p>Access to multiplayer games</p>
                     </div>
                   </div>
-                  <p>+$1/mo</p>
+                  <p class="addOnPrice" id="onlineServicePrice">$1/mo</p>
                 </div>
                 <div
                   class="checkbox2"
@@ -186,7 +189,7 @@
                       <p>Extra 1TB of cloud save</p>
                     </div>
                   </div>
-                  <p>+$2/mo</p>
+                  <p class="largerStorage" id="largerStoragePrice">$2/mo</p>
                 </div>
                 <div
                   class="checkbox3"
@@ -199,7 +202,7 @@
                       <p>Custom theme on your profile</p>
                     </div>
                   </div>
-                  <p>+$2/mo</p>
+                  <p class="customProfile" id="customProfilePrice">$2/mo</p>
                 </div>
               </div>
             </div>
@@ -221,7 +224,7 @@
                 <div class="final-info-row">
                   <div class="info-left">
                     <h4 id="final-plan">Arcade(Yearly)</h4>
-                    <p>Change</p>
+                    <p onclick="tenureChange()">Change</p>
                   </div>
                   <div class="info-right">
                     <h4 id="final-plan-price">$90/yr</h4>

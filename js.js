@@ -1,4 +1,5 @@
 let currentStep = 1;
+let pricing = "monthly";
 let formData = {
   currentStep: 1,
   name: null,
@@ -10,36 +11,60 @@ let formData = {
   total: 0,
 };
 
+localStorage.setItem("localFormData", JSON.stringify(formData));
+
 //  Toggle between Monthly and Annual prices
 const prices = {
-  monthly: { arcade: 9, advanced: 12, pro: 15 },
-  annually: { arcade: 90, advanced: 120, pro: 150 },
+  plans: { arcade: 9, advanced: 12, pro: 15 },
+  addOnPrices: {
+    onlineService: { title: "Online Service", price: 1 },
+    largerStorage: { title: "Larger Storage", price: 2 },
+    customProfile: { title: "Customizable Profile", price: 2 },
+  },
 };
-
-let pricing = "monthly";
 
 document.addEventListener("DOMContentLoaded", function () {
   const toggleButton = document.getElementById("price-toggle");
   const toggleDiv = document.querySelector(".toggle");
 
   function toggle() {
-    let arcadePrice = document.getElementById("arcadePlanPrice");
-    let advancedPrice = document.getElementById("advancedPlanPrice");
-    let proPrice = document.getElementById("proPlanPrice");
+    const arcadePrice = document.getElementById("arcadePlanPrice");
+    const advancedPrice = document.getElementById("advancedPlanPrice");
+    const proPrice = document.getElementById("proPlanPrice");
+    const onlineServicePrice = document.getElementById("onlineServicePrice");
+    const largerStoragePrice = document.getElementById("largerStoragePrice");
+    const customProfilePrice = document.getElementById("customProfilePrice");
     toggleDiv.classList.toggle("right");
 
     if (pricing === "monthly") {
-      arcadePrice.innerHTML = prices.annually.arcade;
-      advancedPrice.innerHTML = prices.annually.advanced;
-      proPrice.innerHTML = prices.annually.pro;
+      const term = "yr";
+      // Switch to annual prices
+      arcadePrice.innerHTML = `$${prices.plans.arcade * 10}/+${term}`;
+      advancedPrice.innerHTML = `$${prices.plans.advanced * 10}/+${term}`;
+      proPrice.innerHTML = `$${prices.plans.pro * 10}/+${term}`;
+      onlineServicePrice.innerHTML = `$${
+        prices.addOnPrices.onlineService.price * 10
+      }/+${term}`;
+      largerStoragePrice.innerHTML = `$${
+        prices.addOnPrices.largerStorage.price * 10
+      }/+${term}`;
+      customProfilePrice.innerHTML = `$${
+        prices.addOnPrices.customProfile.price * 10
+      }/+${term}`;
       pricing = "annually";
     } else {
-      arcadePrice.innerHTML = prices.monthly.arcade;
-      advancedPrice.innerHTML = prices.monthly.advanced;
-      proPrice.innerHTML = prices.monthly.pro;
+      const term = "mo";
+      // Switch to monthly prices
+      arcadePrice.innerHTML = `$${prices.plans.arcade}/+${term}`;
+      advancedPrice.innerHTML = `$${prices.plans.advanced}/+${term}`;
+      proPrice.innerHTML = `$${prices.plans.pro}/+${term}`;
+      onlineServicePrice.innerHTML = `$${prices.addOnPrices.onlineService.price}/+${term}`;
+      largerStoragePrice.innerHTML = `$${prices.addOnPrices.largerStorage.price}/+${term}`;
+      customProfilePrice.innerHTML = `$${prices.addOnPrices.customProfile.price}/+${term}`;
       pricing = "monthly";
     }
   }
+
   toggleButton.addEventListener("click", toggle);
 });
 
@@ -51,6 +76,8 @@ function nextStep() {
     currentStepElement.classList.remove("active");
     nextStepElement.classList.add("active");
     currentStep++;
+    formData.currentStep = currentStep;
+    localStorage.setItem("localFormData", JSON.stringify(formData));
   }
 }
 
@@ -130,7 +157,7 @@ document.addEventListener("DOMContentLoaded", function () {
   planInfoElements.forEach(function (planInfoElement) {
     planInfoElement.addEventListener("click", function () {
       // Remove 'plan-selected' class from all plan info elements
-      planInfoElements.forEach(function (element) {
+      planInfoElements.forEach((element) => {
         element.classList.remove("plan-selected");
       });
 
@@ -138,7 +165,6 @@ document.addEventListener("DOMContentLoaded", function () {
       this.classList.add("plan-selected");
 
       // Add your logic for handling the click event here
-      formData.planName = "arcade";
       console.log(formData.planName);
     });
   });
@@ -148,8 +174,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
 function toggleCheckbox(checkboxId) {
   const checkbox = document.getElementById(checkboxId);
-
   if (checkbox) {
     checkbox.checked = !checkbox.checked;
   }
+}
+
+function tenureChange() {
+  pricing = pricingTenure == "monthly" ? "monthly" : "yearly";
 }
