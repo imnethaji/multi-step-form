@@ -21,6 +21,20 @@ const prices = {
   },
 };
 
+window.addEventListener("load", function () {
+  // Reset checkboxes
+  const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+  checkboxes.forEach((checkbox) => {
+    checkbox.checked = false;
+  });
+
+  // Reset the planAddOns array
+  formData.planAddOns = [];
+
+  // Update the summary
+  updateSummary();
+});
+
 const updatePrice = (tenure) => {
   // Selecting DOM Elements
   const arcadePrice = document.getElementById("arcadePlanPrice");
@@ -73,6 +87,23 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 function nextStep() {
+  // Update current Stpe style
+  const currentStepCount = document.querySelector(
+    `.step-${formData.currentStep}`
+  );
+
+  currentStepCount
+    .querySelector(".step-count-info-current")
+    .classList.replace("step-count-info-current", "step-count-info");
+
+  const nextStepCount = document.querySelector(
+    `.step-${formData.currentStep + 1}`
+  );
+
+  nextStepCount
+    .querySelector(".step-count-info")
+    .classList.replace("step-count-info", "step-count-info-current");
+
   const currentStepElement = document.getElementById(
     `step${formData.currentStep}`
   );
@@ -85,6 +116,10 @@ function nextStep() {
     nextStepElement.classList.add("active");
     formData.currentStep++;
   }
+
+  console.log("working");
+
+  updateSummary();
 }
 
 function prevStep() {
@@ -100,6 +135,7 @@ function prevStep() {
     prevStepElement.classList.add("active");
     formData.currentStep--;
   }
+  updateSummary();
 }
 
 function updateSummary() {
@@ -126,12 +162,19 @@ function updateSummary() {
   document.getElementById("plan-total-price").innerHTML = totalPrice;
 
   const addOnList = document.getElementById("add-ons-list");
-
-  if (formData.planAddOns.length > 1) {
-    formData.planAddOns.map((item, index) => {
+  addOnList.innerHTML = "";
+  if (formData.planAddOns.length > 0) {
+    formData.planAddOns.forEach((item) => {
       const list = document.createElement("li");
-      list.innerHTML = `<p id="${item}">${prices.addOnPrices.item.title}</p>
-                    <p id="add-on-price">+10/yr</p>`;
+      list.innerHTML =
+        formData.planTenure == "monthly"
+          ? `<p class="add-on-title">${prices.addOnPrices[item].title}</p>
+                         <p class="add-on-price">+$${prices.addOnPrices[item].price}/yr</p>`
+          : `<p class="add-on-title">${prices.addOnPrices[item].title}</p>
+                         <p class="add-on-price">+$${
+                           prices.addOnPrices[item].price * 10
+                         }/yr</p>`;
+      addOnList.append(list);
     });
   }
 }
@@ -142,9 +185,7 @@ updateSummary();
 
 document.addEventListener("DOMContentLoaded", function () {
   const planInfoElements = document.querySelectorAll(".plan-info");
-
   let planPrice = "90/yr";
-
   planInfoElements.forEach(function (planInfoElement) {
     planInfoElement.addEventListener("click", function () {
       let currentPlanTenure = formData.planTenure;
