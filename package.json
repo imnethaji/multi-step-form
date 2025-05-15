@@ -3,8 +3,14 @@
   "version": "1.0.0",
   "description": "![Design preview for the Multi-step form coding challenge](./design/desktop-preview.jpg)",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
   "author": "",
   "license": "ISC",
-  "dependencies": {}
+  "dependencies": {
+    "vite": "^6.3.5"
+  }
 }

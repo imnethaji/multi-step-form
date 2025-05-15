@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Subscription Form</title>
+    <link rel="stylesheet" crossorigin href="/assets/index-CIgBM_Sn.css">
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="login-container">
+        <div class="step-info">
+          <div class="step-counter-container">
+            <div class="step-1">
+              <div class="step-count-info-current">
+                <h1>1</h1>
+              </div>
+              <div class="step-count-txt">
+                <h4>Step 1</h4>
+                <h2>Your Info</h2>
+              </div>
+            </div>
+            <div class="step-2">
+              <div class="step-count-info">
+                <h1>2</h1>
+              </div>
+              <div class="step-count-txt">
+                <h4>Step 2</h4>
+                <h2>Select Plan</h2>
+              </div>
+            </div>
+            <div class="step-3">
+              <div class="step-count-info">
+                <h1>3</h1>
+              </div>
+              <div class="step-count-txt">
+                <h4>Step 3</h4>
+                <h2>Add-ons</h2>
+              </div>
+            </div>
+            <div class="step-4">
+              <div class="step-count-info">
+                <h1>4</h1>
+              </div>
+              <div class="step-count-txt">
+                <h4>Step 4</h4>
+                <h2>Summary</h2>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="form-container">
+          
+          <!-- Step 1 content -->
+          <div id="step1" class="step active">
+            <div class="step-top-section">
+              <div class="title-container">
+                <h1 class="step-title">Personal Info</h1>
+                <p class="step-description">
+                  Please provide your name, email address, and phone number.
+                </p>
+              </div>
+              <div class="content">
+                <div class="form-group">
+                  <label for="name">Name</label>
+                  <input
+                    type="text"
+                    id="name"
+                    placeholder="e.g. Stephen King"
+                  />
+                </div>
+
+                <div class="form-group">
+                  <label for="email">Email Address</label>
+                  <input
+                    type="email"
+                    id="email"
+                    placeholder="stephenking@lorem.com"
+                    required
+                  />
+                </div>
+
+                <div class="form-group">
+                  <label for="phone">Phone Number</label>
+                  <input
+                    type="tel"
+                    id="phone"
+                    placeholder="e.g. +1 234 567 890"
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="step-bottom-section">
+              <button onclick="nextStep()">Next Step</button>
+            </div>
+          </div>
+          <!-- Step 2 content -->
+          <div id="step2" class="step">
+            <div class="step-top-section">
+              <div class="title-container">
+                <h1 class="step-title">Select your plan</h1>
+                <p class="step-description">
+                  You have the option of monthly of yearly billing.
+                </p>
+              </div>
+              <div id="plan">
+                <div class="plan-info plan-selected">
+                  <div class="plan-icon">
+                    <img
+                      src="data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20width='40'%20height='40'%20viewBox='0%200%2040%2040'%3e%3cg%20fill='none'%20fill-rule='evenodd'%3e%3ccircle%20cx='20'%20cy='20'%20r='20'%20fill='%23FFAF7E'/%3e%3cpath%20fill='%23FFF'%20fill-rule='nonzero'%20d='M24.995%2018.005h-3.998v5.998h-2v-5.998H15a1%201%200%200%200-1%201V29a1%201%200%200%200%201%201h9.995a1%201%200%200%200%201-1v-9.995a1%201%200%200%200-1-1Zm-5.997%208.996h-2v-1.999h2v2Zm2-11.175a2.999%202.999%200%201%200-2%200v2.18h2v-2.18Z'/%3e%3c/g%3e%3c/svg%3e"
+                      alt="arcade plan image"
+                    />
+                  </div>
+                  <div class="plan-title">
+                    <h4 class="plan-name">Arcade</h4>
+                    <p class="plan-name" id="arcadePlanPrice">$9/mo</p>
+                  </div>
+                </div>
+                <div class="plan-info">
+                  <div class="plan-icon">
+                    <img
+                      src="data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20width='40'%20height='40'%20viewBox='0%200%2040%2040'%3e%3cg%20fill='none'%20fill-rule='evenodd'%3e%3ccircle%20cx='20'%20cy='20'%20r='20'%20fill='%23F9818E'/%3e%3cpath%20fill='%23FFF'%20fill-rule='nonzero'%20d='M25.057%2015H14.944C12.212%2015%2010%2017.03%2010%2019.885c0%202.857%202.212%204.936%204.944%204.936h10.113c2.733%200%204.943-2.08%204.943-4.936S27.79%2015%2025.057%2015ZM17.5%2020.388c0%20.12-.108.237-.234.237h-1.552v1.569c0%20.126-.138.217-.259.217H14.5c-.118%200-.213-.086-.213-.203v-1.583h-1.569c-.126%200-.217-.139-.217-.26v-.956c0-.117.086-.213.202-.213h1.584v-1.554c0-.125.082-.231.203-.231h.989c.12%200%20.236.108.236.234v1.551h1.555c.125%200%20.231.083.231.204v.988Zm5.347.393a.862.862%200%200%201-.869-.855c0-.472.39-.856.869-.856.481%200%20.87.384.87.856%200%20.471-.389.855-.87.855Zm1.9%201.866a.86.86%200%200%201-.87-.852.86.86%200%200%201%20.87-.855c.48%200%20.87.38.87.855a.86.86%200%200%201-.87.852Zm0-3.736a.862.862%200%200%201-.87-.854c0-.472.39-.856.87-.856s.87.384.87.856a.862.862%200%200%201-.87.854Zm1.899%201.87a.862.862%200%200%201-.868-.855c0-.472.389-.856.868-.856s.868.384.868.856a.862.862%200%200%201-.868.855Z'/%3e%3c/g%3e%3c/svg%3e"
+                      alt="advanced plan image"
+                    />
+                  </div>
+                  <div class="plan-title">
+                    <h4 class="plan-name">Advanced</h4>
+                    <p class="plan-price" id="advancedPlanPrice">$12/mo</p>
+                  </div>
+                </div>
+                <div class="plan-info">
+                  <div class="plan-icon">
+                    <img
+                      src="data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20width='40'%20height='40'%20viewBox='0%200%2040%2040'%3e%3cg%20fill='none'%20fill-rule='evenodd'%3e%3ccircle%20cx='20'%20cy='20'%20r='20'%20fill='%23483EFF'/%3e%3cpath%20fill='%23FFF'%20fill-rule='nonzero'%20d='M26.666%2013H13.334A3.333%203.333%200%200%200%2010%2016.333v7.193a3.447%203.447%200%200%200%202.14%203.24c1.238.5%202.656.182%203.56-.8L18.52%2023h2.96l2.82%202.966a3.2%203.2%200%200%200%203.56.8%203.447%203.447%200%200%200%202.14-3.24v-7.193A3.333%203.333%200%200%200%2026.666%2013Zm-9.333%206H16v1.333a.667.667%200%200%201-1.333%200V19h-1.333a.667.667%200%200%201%200-1.334h1.333v-1.333a.667.667%200%201%201%201.333%200v1.333h1.333a.667.667%200%201%201%200%201.334Zm7.333%202a2.667%202.667%200%201%201%200-5.333%202.667%202.667%200%200%201%200%205.333ZM26%2018.333a1.333%201.333%200%201%201-2.667%200%201.333%201.333%200%200%201%202.667%200Z'/%3e%3c/g%3e%3c/svg%3e"
+                      alt="pro plan image"
+                    />
+                  </div>
+                  <div class="plan-title">
+                    <h4 class="plan-name">Pro</h4>
+                    <p class="plan-price" id="proPlanPrice">$15/mo</p>
+                  </div>
+                </div>
+              </div>
+              <div id="price-toggle">
+                Monthly
+                <div class="toggle">
+                  <div class="toggle-button" id="toggle-button"></div>
+                </div>
+                Annually
+              </div>
+            </div>
+
+            <div class="step-bottom-section">
+              <h3 onclick="prevStep()">Go Back</h3>
+              <button onclick="nextStep()">Next Step</button>
+            </div>
+          </div>
+          <!-- Step 3 content -->
+          <div id="step3" class="step">
+            <div class="step-top-section">
+              <div class="title-container">
+                <h1 class="step-title">Pick add-ons</h1>
+                <p class="step-description">
+                  Add-ons help enhance your gaming experience.
+                </p>
+              </div>
+              <div class="add_on_container">
+                <div
+                  class="checkbox1"
+                  onclick="addonToggleCheckbox('onlineService')"
+                >
+                  <div class="add_on_title">
+                    <input type="checkbox" id="onlineService" value="1" />
+                    <div>
+                      <h3>Online Service</h3>
+                      <p>Access to multiplayer games</p>
+                    </div>
+                  </div>
+                  <p class="addOnPrice" id="onlineServicePrice">$1/mo</p>
+                </div>
+                <div
+                  class="checkbox2"
+                  onclick="addonToggleCheckbox('largerStorage')"
+                >
+                  <div class="add_on_title">
+                    <input type="checkbox" id="largerStorage" value="1" />
+                    <div>
+                      <h3>Larger Storage</h3>
+                      <p>Extra 1TB of cloud save</p>
+                    </div>
+                  </div>
+                  <p class="largerStorage" id="largerStoragePrice">$2/mo</p>
+                </div>
+                <div
+                  class="checkbox3"
+                  onclick="addonToggleCheckbox('customProfile')"
+                >
+                  <div class="add_on_title">
+                    <input type="checkbox" id="customProfile" value="1" />
+                    <div>
+                      <h3>Customizable Profile</h3>
+                      <p>Custom theme on your profile</p>
+                    </div>
+                  </div>
+                  <p class="customProfile" id="customProfilePrice">$2/mo</p>
+                </div>
+              </div>
+            </div>
+            <div class="step-bottom-section">
+              <h3 id="step_back" onclick="prevStep()">Go Back</h3>
+              <button onclick="nextStep()">Next Step</button>
+            </div>
+          </div>
+          <!-- Step 4 content -->
+          <div id="step4" class="step">
+            <div class="step-top-section">
+              <div class="title-container">
+                <h1 class="step-title">Finishing up</h1>
+                <p class="step-description">
+                  Double-check everything looks OK before confirming.
+                </p>
+              </div>
+              <div class="final-plan-info">
+                <div class="final-info-row">
+                  <div class="info-left">
+                    <h4 id="final-plan-name">Arcade(Yearly)</h4>
+                    <p onclick="tenureToggle()">Change</p>
+                  </div>
+                  <div class="info-right">
+                    <h4 id="final-plan-price">$90/yr</h4>
+                  </div>
+                </div>
+                <hr />
+                <ul id="add-ons-list">
+                  <li id="add-on-list-item-1">
+                    <p id="add-on-title">Online service</p>
+                    <p id="add-on-price">+10/yr</p>
+                  </li>
+                  <li id="add-on-list-item-2">
+                    <p id="add-on-title">Larger storage</p>
+                    <p id="add-on-price">+20/yr</p>
+                  </li>
+                  <li id="add-on-list-item-3">
+                    <p id="add-on-title">Customizable Profile</p>
+                    <p id="add-on-price">+20/yr</p>
+                  </li>
+                </ul>
+              </div>
+              <div class="plan-total-price-container">
+                <p>Total (<span>per year</span>)</p>
+                <h3 id="plan-total-price">$120/yr</h3>
+              </div>
+            </div>
+            <div class="step-bottom-section">
+              <h3 onclick="prevStep()">Go Back</h3>
+              <button id="confirm" onclick="nextStep()">Confirm</button>
+            </div>
+          </div>
+          <!-- Confirm page -->
+          <div id="step5" class="step">
+            <img src="data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20width='80'%20height='80'%20viewBox='0%200%2080%2080'%3e%3cg%20fill='none'%3e%3ccircle%20cx='40'%20cy='40'%20r='40'%20fill='%23F9818E'/%3e%3cpath%20fill='%23E96170'%20d='M48.464%2079.167c.768-.15%201.53-.321%202.288-.515a40.04%2040.04%200%200%200%203.794-1.266%2040.043%2040.043%200%200%200%203.657-1.63%2040.046%2040.046%200%200%200%2012.463-9.898A40.063%2040.063%200%200%200%2078.3%2051.89c.338-1.117.627-2.249.867-3.391L55.374%2024.698a21.6%2021.6%200%200%200-15.332-6.365%2021.629%2021.629%200%200%200-15.344%206.365c-8.486%208.489-8.486%2022.205%200%2030.694l23.766%2023.775Z'/%3e%3cpath%20fill='%23FFF'%20d='M40.003%2018.333a21.58%2021.58%200%200%201%2015.31%206.351c8.471%208.471%208.471%2022.158%200%2030.63-8.47%208.47-22.156%208.47-30.627%200-8.47-8.472-8.47-22.159%200-30.63a21.594%2021.594%200%200%201%2015.317-6.35Zm9.865%2015c-.316.028-.622.15-.872.344l-12.168%209.13-5.641-5.642c-1.224-1.275-3.63%201.132-2.356%202.356l6.663%206.663c.56.56%201.539.63%202.173.156l13.326-9.995c1.122-.816.43-2.993-.956-3.013a1.666%201.666%200%200%200-.17%200Z'/%3e%3c/g%3e%3c/svg%3e" alt="" />
+            <h1 class="step-title">Thank you!</h1>
+            <p id="finalSummary">
+              Thanks for confirming your subscription! We hope you have fun
+              using our platform. If you ever need support, please feel free to
+              email us at support@lermgaing.com
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="./src/js.js"></script>
+</html>
