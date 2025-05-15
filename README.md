@@ -2,7 +2,7 @@
 
 This is a responsive multi-step form built as part of a Frontend Mentor challenge. The project focuses on building an interactive, user-friendly form with multiple steps, dynamic content updates, and plan selection with pricing options.
 
-# 🔧 Features
+## 🔧 Features
 
 - Step-by-step form navigation (Next & Back)
 
@@ -18,7 +18,7 @@ This is a responsive multi-step form built as part of a Frontend Mentor challeng
 
 - Built using HTML, CSS, and vanilla JavaScript
 
-# 📁 Technologies Used
+## 📁 Technologies Used
 
 - HTML5 & CSS3
 
@@ -26,7 +26,7 @@ This is a responsive multi-step form built as part of a Frontend Mentor challeng
 
 - Frontend Mentor starter files and assets
 
-# 🚀 Getting Started
+## 🚀 Getting Started
 
 - Clone the repo:
   git clone https://github.com/imnethaji/multi-step-form.git
@@ -35,7 +35,7 @@ This is a responsive multi-step form built as part of a Frontend Mentor challeng
 
 - Interact with the multi-step form and explore its features
 
-# 🎯 Challenge Goal
+## 🎯 Challenge Goal
 
 This challenge from Frontend Mentor is designed to practice:
 
