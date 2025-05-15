@@ -87,22 +87,37 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 function nextStep() {
-  // Update current Stpe style
+  const name = document.getElementById("name").value;
+  const email = document.getElementById("email").value;
+  const phone = document.getElementById("phone").value;
+  if (formData.currentStep == 1) {
+    if (name == "" || email == "" || phone == "") {
+      alert("Please enter all the required fields");
+      return;
+    }
+  }
+
+  // Update current Step style
   const currentStepCount = document.querySelector(
     `.step-${formData.currentStep}`
   );
 
-  currentStepCount
-    .querySelector(".step-count-info-current")
-    .classList.replace("step-count-info-current", "step-count-info");
-
   const nextStepCount = document.querySelector(
     `.step-${formData.currentStep + 1}`
   );
+  if (nextStepCount && currentStepCount) {
+    currentStepCount
+      .querySelector(".step-count-info-current")
+      .classList.replace("step-count-info-current", "step-count-info");
 
-  nextStepCount
-    .querySelector(".step-count-info")
-    .classList.replace("step-count-info", "step-count-info-current");
+    nextStepCount
+      .querySelector(".step-count-info")
+      .classList.replace("step-count-info", "step-count-info-current");
+  } else if (!nextStepCount) {
+    currentStepCount
+      .querySelector(".step-count-info-current")
+      .classList.replace("step-count-info-current", "step-count-info");
+  }
 
   const currentStepElement = document.getElementById(
     `step${formData.currentStep}`
@@ -116,13 +131,27 @@ function nextStep() {
     nextStepElement.classList.add("active");
     formData.currentStep++;
   }
-
-  console.log("working");
-
   updateSummary();
 }
 
 function prevStep() {
+  // Update current Step style
+  const currentStepCount = document.querySelector(
+    `.step-${formData.currentStep}`
+  );
+
+  const prevStepCount = document.querySelector(
+    `.step-${formData.currentStep - 1}`
+  );
+
+  prevStepCount
+    .querySelector(".step-count-info")
+    .classList.replace("step-count-info", "step-count-info-current");
+
+  currentStepCount
+    .querySelector(".step-count-info-current")
+    .classList.replace("step-count-info-current", "step-count-info");
+
   const currentStepElement = document.getElementById(
     `step${formData.currentStep}`
   );
@@ -169,7 +198,7 @@ function updateSummary() {
       list.innerHTML =
         formData.planTenure == "monthly"
           ? `<p class="add-on-title">${prices.addOnPrices[item].title}</p>
-                         <p class="add-on-price">+$${prices.addOnPrices[item].price}/yr</p>`
+                         <p class="add-on-price">+$${prices.addOnPrices[item].price}/mo</p>`
           : `<p class="add-on-title">${prices.addOnPrices[item].title}</p>
                          <p class="add-on-price">+$${
                            prices.addOnPrices[item].price * 10
