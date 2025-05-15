@@ -1,16 +1,15 @@
-let currentStep = 1;
-let formData = {
+let initialFormData = {
   currentStep: 1,
   name: null,
   email: null,
   phoneNumber: null,
-  planName: null,
+  planName: "arcade",
   planTenure: "monthly",
   planAddOns: [],
-  total: 0,
+  total: "$9/mo",
 };
 
-localStorage.setItem("localFormData", JSON.stringify(formData));
+let formData = { ...initialFormData };
 
 //  Toggle between Monthly and Annual prices
 const prices = {
@@ -22,163 +21,193 @@ const prices = {
   },
 };
 
+window.addEventListener("load", function () {
+  // Reset checkboxes
+  const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+  checkboxes.forEach((checkbox) => {
+    checkbox.checked = false;
+  });
+
+  // Reset the planAddOns array
+  formData.planAddOns = [];
+
+  // Update the summary
+  updateSummary();
+});
+
+const updatePrice = (tenure) => {
+  // Selecting DOM Elements
+  const arcadePrice = document.getElementById("arcadePlanPrice");
+  const advancedPrice = document.getElementById("advancedPlanPrice");
+  const proPrice = document.getElementById("proPlanPrice");
+  const onlineServicePrice = document.getElementById("onlineServicePrice");
+  const largerStoragePrice = document.getElementById("largerStoragePrice");
+  const customProfilePrice = document.getElementById("customProfilePrice");
+  let term = null;
+  if (tenure != "monthly") {
+    term = "yr";
+    // Switch to annual prices
+    arcadePrice.innerHTML = `$${prices.plans.arcade * 10}/${term}`;
+    advancedPrice.innerHTML = `$${prices.plans.advanced * 10}/${term}`;
+    proPrice.innerHTML = `$${prices.plans.pro * 10}/${term}`;
+    onlineServicePrice.innerHTML = `$${
+      prices.addOnPrices.onlineService.price * 10
+    }/${term}`;
+    largerStoragePrice.innerHTML = `$${
+      prices.addOnPrices.largerStorage.price * 10
+    }/${term}`;
+    customProfilePrice.innerHTML = `$${
+      prices.addOnPrices.customProfile.price * 10
+    }/${term}`;
+  } else {
+    term = "mo";
+    // Switch to monthly prices
+    arcadePrice.innerHTML = `$${prices.plans.arcade}/${term}`;
+    advancedPrice.innerHTML = `$${prices.plans.advanced}/${term}`;
+    proPrice.innerHTML = `$${prices.plans.pro}/${term}`;
+    onlineServicePrice.innerHTML = `$${prices.addOnPrices.onlineService.price}/${term}`;
+    largerStoragePrice.innerHTML = `$${prices.addOnPrices.largerStorage.price}/${term}`;
+    customProfilePrice.innerHTML = `$${prices.addOnPrices.customProfile.price}/${term}`;
+  }
+  updateSummary();
+};
+
+function tenureToggle() {
+  const toggleDiv = document.querySelector(".toggle");
+  toggleDiv.classList.toggle("right");
+  formData.planTenure =
+    formData.planTenure == "monthly" ? "annually" : "monthly";
+  updatePrice(formData.planTenure);
+  updateSummary();
+}
 document.addEventListener("DOMContentLoaded", function () {
   const toggleButton = document.getElementById("price-toggle");
-  const toggleDiv = document.querySelector(".toggle");
 
-  function toggle() {
-    const arcadePrice = document.getElementById("arcadePlanPrice");
-    const advancedPrice = document.getElementById("advancedPlanPrice");
-    const proPrice = document.getElementById("proPlanPrice");
-    const onlineServicePrice = document.getElementById("onlineServicePrice");
-    const largerStoragePrice = document.getElementById("largerStoragePrice");
-    const customProfilePrice = document.getElementById("customProfilePrice");
-    toggleDiv.classList.toggle("right");
-
-    if (formData.planTenure === "monthly") {
-      const term = "yr";
-      // Switch to annual prices
-      arcadePrice.innerHTML = `$${prices.plans.arcade * 10}/+${term}`;
-      advancedPrice.innerHTML = `$${prices.plans.advanced * 10}/+${term}`;
-      proPrice.innerHTML = `$${prices.plans.pro * 10}/+${term}`;
-      onlineServicePrice.innerHTML = `$${
-        prices.addOnPrices.onlineService.price * 10
-      }/+${term}`;
-      largerStoragePrice.innerHTML = `$${
-        prices.addOnPrices.largerStorage.price * 10
-      }/+${term}`;
-      customProfilePrice.innerHTML = `$${
-        prices.addOnPrices.customProfile.price * 10
-      }/+${term}`;
-      formData.planTenure = "annually";
-    } else {
-      const term = "mo";
-      // Switch to monthly prices
-      arcadePrice.innerHTML = `$${prices.plans.arcade}/+${term}`;
-      advancedPrice.innerHTML = `$${prices.plans.advanced}/+${term}`;
-      proPrice.innerHTML = `$${prices.plans.pro}/+${term}`;
-      onlineServicePrice.innerHTML = `$${prices.addOnPrices.onlineService.price}/+${term}`;
-      largerStoragePrice.innerHTML = `$${prices.addOnPrices.largerStorage.price}/+${term}`;
-      customProfilePrice.innerHTML = `$${prices.addOnPrices.customProfile.price}/+${term}`;
-      formData.planTenure = "monthly";
-    }
-  }
-
-  toggleButton.addEventListener("click", toggle);
+  toggleButton.addEventListener("click", tenureToggle);
 });
 
 function nextStep() {
-  const currentStepElement = document.getElementById(`step${currentStep}`);
-  const nextStepElement = document.getElementById(`step${currentStep + 1}`);
+  // Update current Stpe style
+  const currentStepCount = document.querySelector(
+    `.step-${formData.currentStep}`
+  );
+
+  currentStepCount
+    .querySelector(".step-count-info-current")
+    .classList.replace("step-count-info-current", "step-count-info");
+
+  const nextStepCount = document.querySelector(
+    `.step-${formData.currentStep + 1}`
+  );
+
+  nextStepCount
+    .querySelector(".step-count-info")
+    .classList.replace("step-count-info", "step-count-info-current");
+
+  const currentStepElement = document.getElementById(
+    `step${formData.currentStep}`
+  );
+  const nextStepElement = document.getElementById(
+    `step${formData.currentStep + 1}`
+  );
 
   if (currentStepElement && nextStepElement) {
     currentStepElement.classList.remove("active");
     nextStepElement.classList.add("active");
-    currentStep++;
-    formData.currentStep = currentStep;
-    localStorage.setItem("localFormData", JSON.stringify(formData));
+    formData.currentStep++;
   }
+
+  console.log("working");
+
+  updateSummary();
 }
 
 function prevStep() {
-  const currentStepElement = document.getElementById(`step${currentStep}`);
-  const prevStepElement = document.getElementById(`step${currentStep - 1}`);
+  const currentStepElement = document.getElementById(
+    `step${formData.currentStep}`
+  );
+  const prevStepElement = document.getElementById(
+    `step${formData.currentStep - 1}`
+  );
 
   if (currentStepElement && prevStepElement) {
     currentStepElement.classList.remove("active");
     prevStepElement.classList.add("active");
-    currentStep--;
+    formData.currentStep--;
+  }
+  updateSummary();
+}
+
+function updateSummary() {
+  const finalPlanName = document.getElementById("final-plan-name");
+  finalPlanName.textContent = `  
+    ${formData.planName[0].toUpperCase() + formData.planName.substring(1)}(${
+    formData.planTenure[0].toUpperCase() + formData.planTenure.substring(1)
+  })`;
+
+  const currentPlanPrice =
+    formData.planTenure == "monthly"
+      ? `$${prices.plans[formData.planName]}/mo`
+      : `$${prices.plans[formData.planName] * 10}/yr`;
+  const addOnTotal = formData.planAddOns.reduce((total, addon) => {
+    return total + (prices.addOnPrices[addon]?.price || 0);
+  }, 0);
+  // Updating summary page plan price
+  document.getElementById("final-plan-price").innerHTML = currentPlanPrice;
+
+  let totalPrice =
+    formData.planTenure == "monthly"
+      ? `$${prices.plans[formData.planName] + addOnTotal}/mo`
+      : `$${prices.plans[formData.planName] * 10 + addOnTotal * 10}/yr`;
+  document.getElementById("plan-total-price").innerHTML = totalPrice;
+
+  const addOnList = document.getElementById("add-ons-list");
+  addOnList.innerHTML = "";
+  if (formData.planAddOns.length > 0) {
+    formData.planAddOns.forEach((item) => {
+      const list = document.createElement("li");
+      list.innerHTML =
+        formData.planTenure == "monthly"
+          ? `<p class="add-on-title">${prices.addOnPrices[item].title}</p>
+                         <p class="add-on-price">+$${prices.addOnPrices[item].price}/yr</p>`
+          : `<p class="add-on-title">${prices.addOnPrices[item].title}</p>
+                         <p class="add-on-price">+$${
+                           prices.addOnPrices[item].price * 10
+                         }/yr</p>`;
+      addOnList.append(list);
+    });
   }
 }
 
-function confirmSubscription() {
-  // Collect and display summary
-  const name = document.getElementById("name").value;
-  const email = document.getElementById("email").value;
-  const phone = document.getElementById("phone").value;
+updateSummary();
 
-  // Extract plan information from the selected plan-info element
-  const selectedPlanElement = document.querySelector(
-    ".plan-info.plan-selected"
-  );
-  const planName = selectedPlanElement.querySelector(".plan-name").innerText;
-  const planPrice = selectedPlanElement.querySelector(".plan-price").innerText;
-
-  // Extract billing information
-  const billing = document.querySelector('input[name="billing"]:checked').value;
-
-  // Extract selected addons
-  const addons = [];
-  const addonsElements = document.querySelectorAll(
-    'input[type="checkbox"]:checked'
-  );
-  addonsElements.forEach((addon) => addons.push(addon.value));
-
-  // Calculate total
-  let total = parseInt(planPrice);
-  addons.forEach((addon) => (total += parseInt(addon)));
-
-  // Display summary
-  document.getElementById("summaryName").innerText = name;
-  document.getElementById("summaryEmail").innerText = email;
-  document.getElementById("summaryPhone").innerText = phone;
-  document.getElementById(
-    "summaryPlan"
-  ).innerText = `${planName} - $${planPrice}/${billing}`;
-  document.getElementById(
-    "summaryBilling"
-  ).innerText = `Billing Cycle: ${billing}`;
-
-  const summaryAddons = document.getElementById("summaryAddons");
-  summaryAddons.innerHTML = "";
-  addons.forEach((addon) => {
-    const li = document.createElement("li");
-    li.innerText = `+ $${addon}/mo`;
-    summaryAddons.appendChild(li);
-  });
-
-  document.getElementById("summaryTotal").innerText = total;
-
-  // Move to the summary step
-  const currentStepElement = document.getElementById(`step${currentStep}`);
-  const summaryStepElement = document.getElementById("step4");
-
-  if (currentStepElement && summaryStepElement) {
-    currentStepElement.classList.remove("active");
-    summaryStepElement.classList.add("active");
-    currentStep = 4;
-  }
-}
+// Plan change logic
 
 document.addEventListener("DOMContentLoaded", function () {
   const planInfoElements = document.querySelectorAll(".plan-info");
-  let totalPriceDisplay = document.getElementById("final-plan-price");
   let planPrice = "90/yr";
-  totalPriceDisplay.innerHTML = planPrice;
-
   planInfoElements.forEach(function (planInfoElement) {
     planInfoElement.addEventListener("click", function () {
+      let currentPlanTenure = formData.planTenure;
       // Remove 'plan-selected' class from all plan info elements
       planInfoElements.forEach((element) => {
         element.classList.remove("plan-selected");
       });
-
       // Add 'plan-selected' class to the clicked plan info element
       this.classList.add("plan-selected");
-
       // Add your logic for handling the click event here
       let planName = planInfoElement
         .querySelector("h4")
         .textContent.toLowerCase();
+      // Update the selected plan name to state
       formData.planName = planName;
       planPrice = prices.plans[planName];
-      totalPriceDisplay.innerHTML = planPrice;
-      console.log(planName);
+      updatePrice(currentPlanTenure);
     });
   });
 });
 
-//Checkbox toggling logic
+//Adding the selected addons to an Array for calculation
 
 function addonToggleCheckbox(checkboxId) {
   const checkbox = document.getElementById(checkboxId);
@@ -190,10 +219,5 @@ function addonToggleCheckbox(checkboxId) {
   } else if (!checkbox.checked && index !== -1) {
     formData.planAddOns.splice(index, 1);
   }
-
-  console.log("Current Add-ons:", formData.planAddOns);
-}
-
-function tenureChange() {
-  formData.planTenure = "monthly" ? "monthly" : "yearly";
+  updateSummary();
 }
