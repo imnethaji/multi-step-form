@@ -87,14 +87,17 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 function nextStep() {
-  const name = document.getElementById("name").value;
-  const email = document.getElementById("email").value;
-  const phone = document.getElementById("phone").value;
   if (formData.currentStep == 1) {
+    const name = document.getElementById("name").value;
+    const email = document.getElementById("email").value;
+    const phone = document.getElementById("phone").value;
     if (name == "" || email == "" || phone == "") {
       alert("Please enter all the required fields");
       return;
     }
+    formData.name = name;
+    formData.email = email;
+    formData.phone = phone;
   }
 
   // Update current Step style
@@ -205,6 +208,12 @@ function updateSummary() {
                          }/yr</p>`;
       addOnList.append(list);
     });
+    if (formData.currentStep == 3) {
+      const finalSummaryText = document.getElementById("finalSummary");
+      finalSummaryText.textContent = `Thanks for confirming your subscription ${formData.name}! We hope you have fun
+              using our platform. If you ever need support, please feel free to
+              email us at support@lermgaing.com. We have sent the confirmation email to ${formData.email}.`;
+    }
   }
 }
 
