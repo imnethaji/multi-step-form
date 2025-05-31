@@ -71,7 +71,7 @@ const updatePrice = (tenure) => {
   }
   updateSummary();
 };
-
+console.log("Worker");
 function tenureToggle() {
   const toggleDiv = document.querySelector(".toggle");
   toggleDiv.classList.toggle("right");
@@ -86,7 +86,8 @@ document.addEventListener("DOMContentLoaded", function () {
   toggleButton.addEventListener("click", tenureToggle);
 });
 
-function nextStep() {
+function nextStep(step) {
+  console.log("working");
   if (formData.currentStep == 1) {
     const name = document.getElementById("name").value;
     const email = document.getElementById("email").value;
@@ -133,6 +134,11 @@ function nextStep() {
     currentStepElement.classList.remove("active");
     nextStepElement.classList.add("active");
     formData.currentStep++;
+  }
+
+  if (step == "final") {
+    console.log("Trying to hide mobile-step-info");
+    document.querySelector(".mobile-step-info").style.display = "none";
   }
   updateSummary();
 }

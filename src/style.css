@@ -32,7 +32,7 @@ body {
   padding: 1em;
   display: flex;
   height: 550px;
-  min-width: 920px;
+  min-width: 550px;
   max-width: 920px;
   border-radius: 15px;
   filter: drop-shadow(10px 10px 10px var(--lightGray));
@@ -477,4 +477,98 @@ p.add-on-price {
 
 #confirm {
   background-color: var(--purplishBlue);
+}
+
+.mobile-step-info {
+  display: none;
+}
+
+/* Mobile styles */
+
+@media (min-width: 256px) and (max-width: 768px) {
+  html {
+    width: 100vw;
+  }
+  .step-info {
+    display: none;
+  }
+  .mobile-step-info {
+    display: block;
+    width: 100%;
+    position: absolute;
+    top: 3em;
+    z-index: 100;
+  }
+  .login-container {
+    min-width: 70%;
+    max-width: 80%;
+    height: 57vh;
+    display: flex;
+    align-items: center;
+    justify-items: center;
+    filter: drop-shadow(0px 0px 0px var(--lightGray));
+  }
+  .container {
+    position: relative;
+  }
+  .form-container {
+    width: 100%;
+    padding: 0;
+  }
+  #plan {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    width: 100%;
+  }
+  #plan .plan-info {
+    flex-direction: row;
+    height: 2em;
+    width: 90%;
+    margin-bottom: 10px;
+    justify-content: start;
+    gap: 10px;
+    align-items: center;
+  }
+  .step-bottom-section {
+    align-items: center;
+    margin-top: 20px;
+  }
+  .checkbox1,
+  .checkbox2,
+  .checkbox3 {
+    height: 5em;
+  }
+
+  #step-1,
+  #step-2,
+  #step-3,
+  #step-4 {
+    display: flex;
+    justify-content: space-betweens;
+    height: 100%;
+  }
+  .form-container input {
+    height: 1.3em;
+  }
+  #step5 {
+    height: 40vh;
+  }
+  .container {
+    background-image: url("./assets/images/bg-sidebar-mobile.svg");
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+  .step {
+    height: 100%;
+  }
+  .step-counter-container {
+    flex-direction: row;
+    justify-content: center;
+    background: none;
+    width: 100%;
+  }
+  .step-count-txt {
+    display: none;
+  }
 }
